@@ -224,7 +224,7 @@ class Schema(object):
         self._public_types[cls] = internal_type
 
     def to_internal(self):
-        return gql_types.GraphQLSchema(self._query_root)
+        return gql_types.GraphQLSchema(self._query_root, self._mutation_root)
 
     def execute(self, query, root=None, vars=None, operation_name=None):
         return graphql_main(self.to_internal(), query, root, vars, operation_name)
